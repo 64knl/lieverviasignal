@@ -5,19 +5,20 @@
 
 
     <div class="row">
-      <div class="col-6">
+      <div class="col-12 col-md-6">
         <img src="/liever-via-signal.png" class="w-100 mb-4" alt="Liever via signal"/>
-        <div class="btn-group">
+        <div class="btn-group mb-4">
           <a href="/liever-via-signal.png" download="liever-via-signal.png" class="btn btn-primary">Gebruik deze afbeelding</a>
         </div>
 
-      </div>      <div class="col-6">
+      </div>      <div class="col-12 col-md-6">
         <canvas #canvas class="w-100 mb-4" width="1200" height="1200"></canvas>
-        <div class="btn-group">
-
-          <input type="file" (change)="selectFile($event)" accept="image/*" class="btn btn-primary"/>
-          <button class="btn btn-primary" [disabled]="!readyToDownload()" (click)="download()">Download</button>
+        <div class="mb-3">
+          <label for="formFile" class="form-label">Kies je eigen foto</label>
+          <input class="form-control" type="file" (change)="selectFile($event)" accept="image/*">
         </div>
+
+          <button class="btn btn-primary" [disabled]="!readyToDownload()" (click)="download()">Download</button>
       </div>
     </div>
   </div>
