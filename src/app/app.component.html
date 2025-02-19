@@ -1,29 +1,64 @@
 <main class="container">
   <div class="content">
     <h1>Liever via Signal</h1>
-    <p>Verander je WhatsApp profielfoto om aan te geven dat je de voorkeur geeft aan Signal.</p>
-
+    <p>
+      Verander je WhatsApp profielfoto om aan te geven dat je de voorkeur geeft
+      aan Signal.
+    </p>
 
     <div class="row">
       <div class="col-12 col-md-6">
-        <img src="/liever-via-signal.png" class="w-100 mb-4" alt="Liever via signal"/>
+        <img
+          src="/liever-via-signal.png"
+          class="w-100 mb-4"
+          alt="Liever via signal"
+        />
         <div class="btn-group mb-4">
-          <a href="/liever-via-signal.png" download="liever-via-signal.png" class="btn btn-primary">Gebruik deze afbeelding</a>
+          <a href="/liever-via-signal.png" class="btn btn-primary"
+            >Gebruik deze afbeelding</a
+          >
         </div>
+      </div>
+      <div class="col-12 col-md-6">
+        <canvas
+          #canvas
+          class="w-100 mb-4"
+          width="1200"
+          height="1200"
+          style="display: none"
+        ></canvas>
 
-      </div>      <div class="col-12 col-md-6">
-        <canvas #canvas class="w-100 mb-4" width="1200" height="1200"></canvas>
+        @if (readyToDownload()) {
+          <img [src]="download()" alt="image" class="w-100" />
+        } @else {
+          <img src="/preview.png" class="w-100 mb-4" alt="Liever via signal" />
+        }
         <div class="mb-3">
           <label for="formFile" class="form-label">Kies je eigen foto</label>
-          <input class="form-control" type="file" (change)="selectFile($event)" accept="image/*">
+          <input
+            class="form-control"
+            type="file"
+            (change)="selectFile($event)"
+            accept="image/*"
+          />
         </div>
-
-          <button class="btn btn-primary" [disabled]="!readyToDownload()" (click)="download()">Download</button>
+        @if (readyToDownload()) {
+          <div class="alert alert-info">
+            <p>
+              De eenvoudigste manier om deze afbeelding op te slaan is er met je
+              vinger op te drukken tot de optie 'Save image' of 'Save to photos'
+              beschikbaar komt.
+            </p>
+            <img src="/help.png" class="w-100 mb-4" alt="Liever via signal" />
+          </div>
+        }
       </div>
     </div>
   </div>
-  <hr/>
-  Deze website maakt geen gebruik van cookies en slaat geen persoonlijke gegevens op. Foto's worden niet naar de server verzonden. Getoonde gezichten zijn door AI gegenereerd.<br/>
-  <br/>
+  <hr />
+  Deze website maakt geen gebruik van cookies en slaat geen persoonlijke
+  gegevens op. Foto's worden niet naar de server verzonden. Getoonde gezichten
+  zijn door AI gegenereerd.<br />
+  <br />
   Idee: Sander, realisatie 64k
 </main>
